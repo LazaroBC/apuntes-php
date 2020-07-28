@@ -25,8 +25,8 @@
     $resultado = mysqli_query($conexion,$consulta);
 
     while ($fila = mysqli_fetch_array($resultado, MYSQLI_ASSOC)){
-        echo "<table><tr><td>";
         
+        echo "<table><tr><td>";
         echo $fila['id'] . "</td><td>";
         echo $fila['seccion'] . "</td><td>";
         echo $fila['nombre_articulo'] . "</td><td>";
