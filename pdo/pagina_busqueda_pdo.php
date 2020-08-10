@@ -8,16 +8,22 @@
 <body>
     
     <?php
-        $busqueda = $_GET["buscar"];
+        $busqueda_sec = $_GET["seccion"];
+        $busqueda_pais = $_GET["pais_de_origen"];
         try {
             $base = new PDO('mysql:host=localhost; dbname=pruebas','root', '');
             echo "<script>console.log('Conexion establecida' );</script>";
             $base -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $base -> exec("SET CHARACTER SET UTF8");
 
-            $sql = "SELECT * FROM articulos WHERE nombre_articulo = ?";
+            //$sql = "SELECT * FROM articulos WHERE nombre_articulo = ?";
+            // Marcadores
+            $sql = "SELECT * FROM articulos WHERE seccion = :SECC and pais_de_origen = :PAI";
             $resultado = $base -> prepare($sql);
-            $resultado->execute(array($busqueda));
+            
+            //$resultado->execute(array($busqueda));
+            //Marcadores
+            $resultado->execute(array(":SECC" =>$busqueda_sec, ":PAI"=>$busqueda_pais));
             echo "<table><tr>
             <th>Id: </th>
             <th>Seccion: </th>
