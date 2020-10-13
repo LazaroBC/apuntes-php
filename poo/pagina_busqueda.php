@@ -1,6 +1,6 @@
 <?php
 
-    require 'busqueda_elementos.php';
+    require "BusquedaElementos.php";
     $productos = new BusquedaElementos();
     $array_elementos = $elementos->getElementos();
 
